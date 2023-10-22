@@ -14,8 +14,8 @@ int main() {
   // Conectarse con el servidor de Bard
   struct http_client *client = http_client_new();
   http_client_set_url(client, "https://api.bard.ai/v1/generate");
-  http_client_set_header(client, "Authorization", "Bearer YOUR_API_KEY");
-  http_client_set_body(client, "prompt=Escribe la visi髇, misi髇, valores y pol韙icas para una empresa de tipo %s", type_of_company);
+  http_client_set_header(client, "Authorization", "Bearer Ap1");
+  http_client_set_body(client, "prompt=Escribe la visi贸n, misi贸n, valores y pol铆ticas para una empresa de tipo %s", type_of_company);
   int status_code = http_client_send(client);
   if (status_code != 200) {
     fprintf(stderr, "Error al conectarse con el servidor de Bard: %d\n", status_code);
@@ -35,10 +35,10 @@ int main() {
 
     switch (i) {
       case 0:
-        printf("Visi髇: %s\n", json_object_get_string(choice));
+        printf("Visi贸n: %s\n", json_object_get_string(choice));
         break;
       case 1:
-        printf("Misi髇: %s\n", json_object_get_string(choice));
+        printf("Misi贸n: %s\n", json_object_get_string(choice));
         break;
       case 2:
         printf("Valores:\n");
@@ -48,7 +48,7 @@ int main() {
         }
         break;
       case 3:
-        printf("Pol韙icas:\n");
+        printf("Pol铆ticas:\n");
         for (int j = 0; j < json_object_array_length(json_object_get_array_item(output, 2)); j++) {
           struct json_object *policy = json_object_array_get_item(json_object_get_array_item(output, 2), j);
           printf("  * %s\n", json_object_get_string(policy));
