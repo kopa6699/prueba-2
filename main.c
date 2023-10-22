@@ -14,7 +14,7 @@ int main() {
   // Conectarse con el servidor de Bard
   struct http_client *client = http_client_new();
   http_client_set_url(client, "https://api.bard.ai/v1/generate");
-  http_client_set_header(client, "Authorization", "Bearer Ap1");
+  http_client_set_header(client, "Authorization", "Bearer AP1");
   http_client_set_body(client, "prompt=Escribe la visión, misión, valores y políticas para una empresa de tipo %s", type_of_company);
   int status_code = http_client_send(client);
   if (status_code != 200) {
